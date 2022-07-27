@@ -66,4 +66,9 @@ public class CSVProcessorConfig {
     boolean isValidQuoteCharacter() {
         return quoteCharacter.length() == 1;
     }
+
+    @AssertTrue(message = "quote_character and delimiter cannot be the same character")
+    boolean areDelimiterAndQuoteCharacterDifferent() {
+        return !(delimiter.equals(quoteCharacter));
+    }
 }
