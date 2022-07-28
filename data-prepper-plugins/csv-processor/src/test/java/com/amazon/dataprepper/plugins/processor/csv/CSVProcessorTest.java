@@ -54,7 +54,7 @@ public class CSVProcessorTest {
     }
 
     @Test
-    public void test_when_message_is_empty_then_not_parsed() {
+    public void test_when_messageIsEmpty_then_notParsed() {
         // not sure what default behavior here should be
         Record<Event> eventUnderTest = createMessageEvent("");
         final List<Record<Event>> editedEvents = (List<Record<Event>>) csvProcessor.doExecute(Collections.singletonList(eventUnderTest));
@@ -64,7 +64,7 @@ public class CSVProcessorTest {
     }
 
     @Test
-    public void test_when_delimiter_is_tab_then_parsed_correctly() {
+    public void test_when_delimiterIsTab_then_parsedCorrectly() {
         when(processorConfig.getDelimiter()).thenReturn("\t");
         csvProcessor = createObjectUnderTest();
 
@@ -141,7 +141,7 @@ public class CSVProcessorTest {
     }
 
     @Test
-    public void test_when_message_has_one_column_then_parsed() {
+    public void test_when_messageHasOneColumn_then_parsed() {
         // not sure what default behavior here should be
         Record<Event> eventUnderTest = createMessageEvent("1");
         final List<Record<Event>> editedEvents = (List<Record<Event>>) csvProcessor.doExecute(Collections.singletonList(eventUnderTest));
@@ -242,13 +242,13 @@ public class CSVProcessorTest {
         final Event firstParsedEvent = editedEvents.get(0).getData();
         final Event secondParsedEvent = editedEvents.get(1).getData();
 
-        assertThatKeyEquals(secondParsedEvent, "user_col1", "1");
-        assertThatKeyEquals(secondParsedEvent, "user_col2", "2");
-        assertThatKeyEquals(secondParsedEvent, "user_col3", "3");
-
         assertThatKeyEquals(firstParsedEvent, "col1", "1");
         assertThatKeyEquals(firstParsedEvent, "col2", "2");
         assertThatKeyEquals(firstParsedEvent, "col3", "3");
+
+        assertThatKeyEquals(secondParsedEvent, "user_col1", "1");
+        assertThatKeyEquals(secondParsedEvent, "user_col2", "2");
+        assertThatKeyEquals(secondParsedEvent, "user_col3", "3");
     }
 
     @Test
@@ -267,7 +267,7 @@ public class CSVProcessorTest {
 
 
     @Test
-    public void test_when_source_is_not_message_then_parses_correctly() {
+    public void test_when_sourceIsNotMessage_then_parsesCorrectly() {
         when(processorConfig.getSource()).thenReturn("different_source");
         csvProcessor = createObjectUnderTest();
 
