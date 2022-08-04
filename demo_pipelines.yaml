@@ -1,0 +1,14 @@
+s3-pipeline:
+  source:
+    s3:
+      notification_type: "sqs"
+      codec:
+        csv:
+          detect_header: "true"
+      compression: none
+      sqs:
+        queue_url: "https://sqs.us-west-2.amazonaws.com/264564585584/testingdpfroms3"
+      aws:
+        region: "us-west-2"
+  sink:
+    - stdout:

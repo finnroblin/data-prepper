@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Configuration class for the newline delimited codec.
  */
 public class NewlineDelimitedConfig {
-    private final int skipLines = 0;
+    private int skipLines = 0;
 
     @JsonProperty("header_destination")
     private String headerDestination;
